@@ -21,7 +21,9 @@
    - [Steps](#steps)  
 5. [Engineering and Testing Methodology](#engineering-and-testing-methodology)  
    - [Engineering Approach](#engineering-approach)  
-   - [Testing Approach](#testing-approach)  
+   - [Testing Approach](#testing-approach)
+      - [Code Coverage](#code-coverage)  
+      - [Test Files and Purpose](#test-files-and-purpose)
 6. [Packaging Layout](#packaging-layout)  
 7. [Dependency Attribution](#dependency-attribution)  
    - [Dependencies](#dependencies)  
@@ -209,7 +211,12 @@ The algorithm uses **seven Roman numeral symbols**:
 The application is thoroughly tested using unit and integration tests to ensure correctness, robustness, and maintainability. The following test files cover all critical functionalities:
 
 ---
+#### **Code Coverage**:
+   
+   Below is a screenshot of the code coverage report for this project:
 
+   ![Code Coverage](https://github.com/user-attachments/assets/dfe22890-55b6-44d7-83bb-b2b8993b5258)
+   
 #### **Test Files and Purpose**
 
 1. **`app.test.js`**
