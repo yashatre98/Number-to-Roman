@@ -1,0 +1,14 @@
+{
+  "welcome_message": "Bienvenido a la API de Números Romanos",
+  "convert_button": "Convertir a números romanos",
+  "metrics_link": "Punto de métricas",
+  "error_404": "El recurso solicitado no fue encontrado.",
+  "internal_server_error": "Error interno del servidor.",
+  "error_title": "Error {{status}}",
+  "error_heading": "Error: {{status}}",
+  "available_endpoints": "Puntos disponibles",
+  "root_endpoint": "Raíz: Página de bienvenida",
+  "roman_endpoint": "/romannumeral: Convertir número a número romano",
+  "metrics_endpoint": "/metrics: Métricas Prometheus",
+  "react_metrics_endpoint": "/react-metrics: Enviar métricas personalizadas"
+}

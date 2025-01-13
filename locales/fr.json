@@ -1,0 +1,14 @@
+{
+  "welcome_message": "Bienvenue dans l'API des chiffres romains",
+  "convert_button": "Convertir en chiffres romains",
+  "metrics_link": "Point de métriques",
+  "error_404": "La ressource demandée est introuvable.",
+  "internal_server_error": "Erreur interne du serveur.",
+  "error_title": "Erreur {{status}}",
+  "error_heading": "Erreur : {{status}}",
+  "available_endpoints": "Points d'accès disponibles",
+  "root_endpoint": "Racine : Page d'accueil",
+  "roman_endpoint": "/romannumeral : Convertir un nombre en chiffre romain",
+  "metrics_endpoint": "/metrics : Métriques Prometheus",
+  "react_metrics_endpoint": "/react-metrics : Envoyer des métriques personnalisées"
+}

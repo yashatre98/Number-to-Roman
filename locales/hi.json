@@ -1,0 +1,14 @@
+{
+    "welcome_message": "रोमन न्यूमेरल API में आपका स्वागत है",
+    "convert_button": "रोमन न्यूमेरल में बदलें",
+    "metrics_link": "मेट्रिक्स एंडपॉइंट",
+    "error_404": "अनुरोधित संसाधन नहीं मिला।",
+    "internal_server_error": "आंतरिक सर्वर त्रुटि।",
+    "error_title": "त्रुटि {{status}}",
+    "error_heading": "त्रुटि: {{status}}",
+    "available_endpoints": "उपलब्ध एंडपॉइंट्स",
+    "root_endpoint": "रूट: स्वागत पृष्ठ",
+    "roman_endpoint": "/romannumeral: संख्या को रोमन न्यूमेरल में बदलें",
+    "metrics_endpoint": "/metrics: Prometheus मेट्रिक्स",
+    "react_metrics_endpoint": "/react-metrics: कस्टम मेट्रिक्स भेजें"
+  }

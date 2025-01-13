@@ -15,8 +15,8 @@ const logger = require('morgan');
 
 // Import custom modules
 const routes = require('./routes/indexRouter');
-const errorHandler = require('./errorHandler'); // Import error handling logic
-
+const errorHandler = require('./errorHandler'); // error handling logic
+const languageMiddleware = require('./locales/languageMiddleware'); // language middleware
 const app = express();
 
 // Middlewares
@@ -25,6 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(logger('dev'));
+
+// Initialize language middleware
+app.use(languageMiddleware);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));

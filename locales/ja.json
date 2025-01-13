@@ -1,0 +1,14 @@
+{
+    "welcome_message": "ローマ数字 API へようこそ",
+    "convert_button": "ローマ数字に変換",
+    "metrics_link": "メトリクスエンドポイント",
+    "error_404": "要求されたリソースが見つかりません。",
+    "internal_server_error": "内部サーバーエラー。",
+    "error_title": "エラー {{status}}",
+    "error_heading": "エラー: {{status}}",
+    "available_endpoints": "利用可能なエンドポイント",
+    "root_endpoint": "ルート：ウェルカムページ",
+    "roman_endpoint": "/romannumeral: 数字をローマ数字に変換",
+    "metrics_endpoint": "/metrics: Prometheus メトリクス",
+    "react_metrics_endpoint": "/react-metrics: カスタムメトリクスを送信"
+  }
