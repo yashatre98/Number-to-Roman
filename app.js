@@ -1,65 +1,41 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+/*
+    This file is the entry point of the application.
+    It has been refactored to only be responsible for setting up the Express application and its middleware.
+    The routing logic has been centralized in the routes/index.js file.
+    The error handling logic has been centralized in the errorHandler.js file.
+    The utility function for converting numbers to Roman numerals has been moved to the utils/romanConverter.js file.
+    The logger has been moved to its own module.
+*/
 
-const romanRouter = require('./routes/roman'); 
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const logger = require('morgan');
 
-const bodyParser = require('body-parser');
-const winston_logger = require('./logger');
-var app = express();
+// Import custom modules
+const routes = require('./routes/indexRouter');
+const errorHandler = require('./errorHandler'); // Import error handling logic
 
+const app = express();
+
+// Middlewares
 app.use(cors());
-app.use(express.json()); // Parse JSON payloads
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded payloads
-const promBundle = require('express-prom-bundle');
-const metricsMiddleware = promBundle({
-  includeMethod: true,       // Track HTTP methods
-  includePath: true,         // Track HTTP paths
-  customLabels: { app: 'roman-numeral-api' },
-  promClient: {
-      collectDefaultMetrics: {} // Collect default Node.js metrics
-  }
-});
-
-app.use(metricsMiddleware);
-app.get('/metrics', (req, res) => {
-  res.set('Content-Type', promBundle.promClient.register.contentType);
-  res.end(promBundle.promClient.register.metrics());
-});
-
-
-
-const metricsRouter = require('./routes/metrics');
-app.use('/', metricsRouter);
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(logger('dev'));
+
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', romanRouter); 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  winston_logger.warn(`404 Error - ${req.method} ${req.url}`);
-  next(createError(404));
-});
+// centralized Routes
+app.use('/', routes);
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  winston_logger.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method}`);
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// Catch 404 and forward to error handler
+app.use(errorHandler.handle404);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// General error handler
+app.use(errorHandler.generalErrorHandler);
 
 module.exports = app;
