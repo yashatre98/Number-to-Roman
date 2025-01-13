@@ -2,32 +2,33 @@
 
 ---
 
+
+
 ## Table of Contents
 
 1. [Project Overview](#project-overview)  
-
 2. [API Endpoints](#api-endpoints)  
    - [Roman Numeral Conversion Endpoint](#roman-numeral-conversion-endpoint)  
    - [Metrics Logging Endpoint](#metrics-logging-endpoint)  
-
 3. [Roman Numerals Specification Used in This Project](#roman-numerals-specification-used-in-this-project)  
    - [Symbols and Values](#symbols-and-values)  
    - [Rules Implemented](#rules-implemented)  
    - [Algorithm Implementation](#algorithm-implementation)  
    - [Example Conversion](#example-conversion)  
    - [Complexity Analysis](#complexity-analysis)  
-
 4. [Build and Run Instructions](#build-and-run-instructions)  
-
+   - [Prerequisites](#prerequisites)  
+   - [Steps](#steps)  
 5. [Engineering and Testing Methodology](#engineering-and-testing-methodology)  
    - [Engineering Approach](#engineering-approach)  
-   - [Testing Approach](#testing-approach)  
-
+   - [Testing Approach](#testing-approach)
+      - [Code Coverage](#code-coverage)  
+      - [Test Files and Purpose](#test-files-and-purpose)
 6. [Packaging Layout](#packaging-layout)  
-
 7. [Dependency Attribution](#dependency-attribution)  
    - [Dependencies](#dependencies)  
    - [DevDependencies](#devdependencies)  
+
 ---
 
 ## Project Overview
@@ -187,8 +188,9 @@ The algorithm uses **seven Roman numeral symbols**:
 5. **Testing Instructions**
     ```bash
     npm test 
+    this should show the coverage too
 ---
-## **Engineering and Testing Methodology**
+## Engineering and Testing Methodology
 
 ### **Engineering Approach**
 
@@ -206,21 +208,70 @@ The algorithm uses **seven Roman numeral symbols**:
 
 ### **Testing Approach**
 
-- **Unit Tests**:  
-  - **File**: `roman.test.js`  
-  - **Purpose**: Tests API responses to ensure correctness and robustness.  
-  - **Test Cases**:  
-    1. **Valid Inputs**:  
-       - Checks if numeric inputs produce the expected Roman numeral outputs.  
-    2. **Invalid Inputs**:  
-       - Verifies errors are returned for non-numeric values and inputs outside the range of **1–3999**.  
-    3. **Boundary Cases**:  
-       - Tests minimum (**1**) and maximum (**3999**) values to confirm proper handling of edge cases.  
+The application is thoroughly tested using unit and integration tests to ensure correctness, robustness, and maintainability. The following test files cover all critical functionalities:
+
+---
+#### **Code Coverage**:
+   
+   Below is a screenshot of the code coverage report for this project:
+
+   ![Code Coverage](https://github.com/user-attachments/assets/dfe22890-55b6-44d7-83bb-b2b8993b5258)
+   
+#### **Test Files and Purpose**
+
+1. **`app.test.js`**
+   - **Purpose**: Tests the Express application’s middleware, routing, and error handling setup.
+   - **Test Cases**:
+     - Ensures CORS headers are properly applied.
+     - Verifies static files are served correctly from the `/public` directory.
+     - Confirms routes are mounted correctly.
+     - Tests error handling for:
+       - 404 errors (non-existent routes).
+       - General server errors (500).
+
+2. **`errorHandler.test.js`**
+   - **Purpose**: Verifies centralized error handling functionality.
+   - **Test Cases**:
+     - Validates that 404 errors are logged and responded to correctly.
+     - Ensures 500 errors are logged with appropriate details.
+     - Confirms the response format for both HTML and JSON-based client requests.
+
+3. **`indexRouter.test.js`**
+   - **Purpose**: Tests the centralized routing logic for the application.
+   - **Test Cases**:
+     - Verifies all individual routers (root, metrics, roman) are mounted correctly.
+     - Ensures invalid paths handled by `indexRouter` result in a 404 error.
+
+4. **`metricsRouter.test.js`**
+   - **Purpose**: Tests the functionality of the metrics endpoints.
+   - **Test Cases**:
+     - Verifies Prometheus metrics are served correctly from `/metrics`.
+     - Ensures valid metrics data can be posted to `/react-metrics`.
+     - Validates that logging is triggered for incoming metrics data.
+
+5. **`roman.test.js`**
+   - **Purpose**: Ensures the Roman numeral conversion API (`/romannumeral`) works as expected.
+   - **Test Cases**:
+     - **Valid Inputs**:
+       - Confirms numeric inputs return the correct Roman numeral output.
+     - **Invalid Inputs**:
+       - Tests non-numeric values, missing parameters, and numbers outside the range of 1–3999.
+     - **Boundary Cases**:
+       - Validates handling for the minimum (1) and maximum (3999) allowable values.
+
+6. **`root.test.js`**
+   - **Purpose**: Tests the root endpoint (`/`) functionality.
+   - **Test Cases**:
+     - Verifies the welcome page is served correctly with proper HTML content.
+     - Confirms links to other endpoints (e.g., `/romannumeral`, `/metrics`) are correctly rendered.
+
+
 
 - **Frameworks**:  
   - **Jest** - JavaScript testing framework for unit tests.  
+  - **Supertest**: Library for testing HTTP endpoints in Node.js applications.
 
-## **Packaging Layout**
+## Packaging Layout
     ```
     Number-to-Roman/
     ├── routes/
@@ -235,7 +286,7 @@ The algorithm uses **seven Roman numeral symbols**:
     ├── package.json            # Project metadata  
     |... some config files
     
-## **Dependency Attribution**
+## Dependency Attribution
 
 - ### **Dependencies**
 
