@@ -1,3 +1,10 @@
+/* 
+In this file, we configure the i18next middleware to handle language detection and translation.
+The middleware is used to provide translations for error messages and text displayed on the API's web pages.
+Support for 8 languages is preloaded, and the default language is set to English.
+Russian, Chinese, Hindi, English, Espanish, French, Japanese and Arabic are the supported languages.
+*/
+
 const i18next = require('i18next');
 const Backend = require('i18next-fs-backend');
 const Middleware = require('i18next-http-middleware');
