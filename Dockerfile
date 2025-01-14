@@ -8,12 +8,16 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install all dependencies (including devDependencies)
-ENV NODE_ENV=development
-RUN npm install
-RUN npm install supertest express-prom-bundle --save-dev
+# ENV NODE_ENV=development
+# RUN npm install
+# RUN npm install supertest express-prom-bundle --save-dev
 
 # Copy the rest of the application
 COPY . .
+
+ENV NODE_ENV=development
+RUN npm install
+RUN npm install supertest express-prom-bundle --save-dev
 
 # Run tests
 RUN npm test
