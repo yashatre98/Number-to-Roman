@@ -13,7 +13,7 @@ const handle404 = (req, res, next) => {
 // General error handler
 const generalErrorHandler = (err, req, res, next) => {
   const statusCode = err.status || 500;
-  const errorMessage =
+  const errorMessage = 
     statusCode === 404
       ? err.message 
       : req.app.get('env') === 'development'

@@ -4,7 +4,7 @@
 */ 
 const express = require('express');
 const router = express.Router();
-// Root route
+// Root route handler 
 router.get('/', (req, res) => {
   res.send(`
     <html>
