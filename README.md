@@ -45,35 +45,47 @@
   
 1. **Clone the Repository**:  
    ```bash
-   git clone https://github.com/yashatre98/Number-to-Roman.git
-   cd Number-to-Roman
+   test_directory % git clone https://github.com/yashatre98/Number-to-Roman.git
+   test_directory % cd Number-to-Roman
+   Number-to-Roman % 
    ```
 2. **install dependencies**  
    ```bash
-   npm install
+   Number-to-Roman % npm install
 3. **Build docker image**  
    ```bash
-   docker build --no-cache -t express-api .
+   Number-to-Roman % docker build --no-cache -t express-api .
 4. **Run the image**:
    ```bash
-   docker run -d -p 3000:3000 --name express-api-container express-api
+   Number-to-Roman % docker run -d -p 3000:3000 --name express-api-container express-api
+
+   API is now accessible at http://localhost:3000/
+   for manual testing postman or curl preferred. 
 5. **Access the image in container**:
    ```bash
-   docker run -it --entrypoint sh express-api 
+   Number-to-Roman % docker run -it --entrypoint sh express-api 
 6. **Shell change to container entrypoint**:
    ```bash
-   you should see something like this:
    /usr/src/app # ls
-  Dockerfile         README.md          bin                errorHandler.js    logs               package-lock.json  routes             utils
-  LICENSE            app.js             coverage           logger.js          node_modules       package.json       tests              views
-4. **Access the API**:
+
+   output should be like this :
+   /usr/src/app # ls
+   Dockerfile         README.md          bin                errorHandler.js    logs               package-lock.json  routes             utils
+   LICENSE            app.js             coverage           logger.js          node_modules       package.json       tests              views
+7. **Run tests in container**:
+   ```bash
+   /usr/src/app # npm test
+   this will generate coverage report too. 
+
+8. **Access the API**:
     ```
     GET http://localhost:3000/romannumeral?query=123
-    Postman or curl preferred to test.
-5. **Testing Instructions**
+    Browser orPostman or curl preferred to test.
+9. **Testing Instructions out of docker**
     ```bash
-    npm test 
-    this should show the coverage too
+    Number-to-Roman % npm install
+    Number-to-Roman % npm test 
+            this should show the coverage too
 ---
 
 ---
