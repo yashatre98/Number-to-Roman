@@ -1,36 +1,82 @@
 # Express Roman Numeral Conversion API
 
----
-
-
-
 ## Table of Contents
 
-1. [Project Overview](#project-overview)  
-2. [API Endpoints](#api-endpoints)  
+1. [Build and Run Instructions](#build-and-run-instructions)  
+   - [Prerequisites](#prerequisites)  
+   - [Steps](#steps)  
+2. [Project Overview](#project-overview)  
+3. [API Endpoints](#api-endpoints)  
    - [Roman Numeral Conversion Endpoint](#roman-numeral-conversion-endpoint)  
    - [Metrics Logging Endpoint](#metrics-logging-endpoint)  
-3. [Roman Numerals Specification Used in This Project](#roman-numerals-specification-used-in-this-project)  
+4. [Roman Numerals Specification Used in This Project](#roman-numerals-specification-used-in-this-project)  
    - [Symbols and Values](#symbols-and-values)  
    - [Rules Implemented](#rules-implemented)  
    - [Algorithm Implementation](#algorithm-implementation)  
    - [Example Conversion](#example-conversion)  
    - [Complexity Analysis](#complexity-analysis)  
-4. [Build and Run Instructions](#build-and-run-instructions)  
-   - [Prerequisites](#prerequisites)  
-   - [Steps](#steps)  
 5. [Engineering and Testing Methodology](#engineering-and-testing-methodology)  
    - [Engineering Approach](#engineering-approach)  
-   - [Testing Approach](#testing-approach)
-      - [Code Coverage](#code-coverage)  
-      - [Test Files and Purpose](#test-files-and-purpose)
+   - [Testing Approach](#testing-approach)  
+     - [Code Coverage](#code-coverage)  
+     - [Test Files and Purpose](#test-files-and-purpose)  
 6. [Packaging Layout](#packaging-layout)  
 7. [Dependency Attribution](#dependency-attribution)  
    - [Dependencies](#dependencies)  
    - [DevDependencies](#devdependencies)  
 
 ---
+## **Build and Run Instructions**
 
+### **Prerequisites**
+- **Node.js** (version 18 or later)  
+- **npm** (bundled with Node.js)  
+- **Docker Desktop** Install [docker desktop](https://www.docker.com/products/docker-desktop/) and open it, set paths if needed.
+
+### **Steps**
+0. **Verify dependency installation/setup**:
+  ```
+  node --version
+  npm --version
+  docker --version
+
+  once you get versions as outputs, Open docker desktop.
+  ```
+  
+1. **Clone the Repository**:  
+   ```bash
+   git clone https://github.com/yashatre98/Number-to-Roman.git
+   cd Number-to-Roman
+   ```
+2. **install dependencies**  
+   ```bash
+   npm install
+3. **Build docker image**  
+   ```bash
+   docker build --no-cache -t express-api .
+4. **Run the image**:
+   ```bash
+   docker run -d -p 3000:3000 --name express-api-container express-api
+5. **Access the image in container**:
+   ```bash
+   docker run -it --entrypoint sh express-api 
+6. **Shell change to container entrypoint**:
+   ```bash
+   you should see something like this:
+   /usr/src/app # ls
+  Dockerfile         README.md          bin                errorHandler.js    logs               package-lock.json  routes             utils
+  LICENSE            app.js             coverage           logger.js          node_modules       package.json       tests              views
+4. **Access the API**:
+    ```
+    GET http://localhost:3000/romannumeral?query=123
+    Postman or curl preferred to test.
+5. **Testing Instructions**
+    ```bash
+    npm test 
+    this should show the coverage too
+---
+
+---
 ## Project Overview
 
 This project is a **RESTful Express API** for **Roman numeral conversion**.  
@@ -163,32 +209,6 @@ The algorithm uses **seven Roman numeral symbols**:
 - **Space Complexity**:  
   **O(1)** - The mapping table is **fixed-size**, and only a **result string** is dynamically updated.  
 
----
-## **Build and Run Instructions**
-
-### **Prerequisites**
-- **Node.js** (version 18 or later)  
-- **npm** (bundled with Node.js)  
-
-### **Steps**
-1. **Clone the Repository**:  
-   ```bash
-   git clone https://github.com/yashatre98/Number-to-Roman.git
-   cd Number-to-Roman
-2. **Install Dependencies**  
-   ```bash
-   npm install
-3. **Run the local server**  
-   ```bash
-   npm start
-4. **Access the API**:
-    ```
-    GET http://localhost:3000/romannumeral?query=123
-    Postman or curl preferred to test.
-5. **Testing Instructions**
-    ```bash
-    npm test 
-    this should show the coverage too
 ---
 ## Engineering and Testing Methodology
 
