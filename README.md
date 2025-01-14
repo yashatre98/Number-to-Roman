@@ -35,13 +35,13 @@
 
 ### **Steps**
 0. **Verify dependency installation/setup**:
-  ```
-  node --version
-  npm --version
-  docker --version
-
-  once you get versions as outputs, Open docker desktop.
-  ```
+   ```bash
+   test_directory % node --version
+   test_directory % npm --version
+   test_directory % docker --version
+   ```
+   once you get versions as outputs, Open docker desktop.
+   
   
 1. **Clone the Repository**:  
    ```bash
