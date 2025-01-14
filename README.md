@@ -250,7 +250,7 @@ The application is thoroughly tested using unit and integration tests to ensure 
    ![Code Coverage](https://github.com/user-attachments/assets/dfe22890-55b6-44d7-83bb-b2b8993b5258)
 
     ```
-    Coverage report access:
+    Coverage report access (only available out of container, in cloned repo):
 
     Number-to-Roman % open coverage/lcov-report/index.html
    
