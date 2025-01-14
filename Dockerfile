@@ -10,6 +10,7 @@ COPY package*.json ./
 # Install all dependencies (including devDependencies)
 ENV NODE_ENV=development
 RUN npm install
+RUN npm install supertest express-prom-bundle --save-dev
 
 # Copy the rest of the application
 COPY . .
