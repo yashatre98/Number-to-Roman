@@ -86,7 +86,6 @@
     Number-to-Roman % npm install
     Number-to-Roman % npm test 
             this should show the coverage too
----
 
 ---
 ## Project Overview
@@ -306,17 +305,24 @@ The application is thoroughly tested using unit and integration tests to ensure 
 ## Packaging Layout
     ```
     Number-to-Roman/
-    ├── routes/
-    │   ├── roman.js            # Roman numeral conversion route  
-    │   ├── metrics.js          # Metrics logging route  
-    ├── tests/
-    │   ├── roman.test.js       # Unit tests  
-    ├── logs/                   # Log files  
-    ├── public/                 # Static assets  
-    ├── app.js                  # Express app setup  
-    ├── logger.js               # Winston logger configuration  
-    ├── package.json            # Project metadata  
-    |... some config files
+    ├── routes/                         #Routes
+    │   ├── IndexRouter.js              # Refactored common route  
+    │   ├── metricsRouter.js            # Metrics logging route  
+    │   ├── romanRouter.js              # Conversion route  
+    │   ├── root.js                     # '/' route  
+    ├── tests/                          # tests
+    │   ├── app.test.js                 # Unit tests
+    │   ├── errorHandler.test.js        # Unit tests
+    │   ├── indexRouter.test.js         # Unit tests
+    │   ├── metricsRouter.test.js       # Unit tests
+    │   ├── roman.test.js               # Unit tests
+    │   ├── root.test.js                # Unit tests  
+    ├── logs/                           # Log files  
+    ├── app.js                          # Express app setup  
+    ├── logger.js                       # Winston logger configuration  
+    ├── package.json                    # Project metadata  
+    ├── Dockerfile                      # Docker file
+    |... 
     
 ## Dependency Attribution
 
