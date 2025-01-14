@@ -64,6 +64,10 @@
 5. **Access the image in container**:
    ```bash
    Number-to-Roman % docker run -it --entrypoint sh express-api 
+      
+   Shell changed
+   
+   /usr/src/app #
 6. **Shell change to container entrypoint**:
    ```bash
    /usr/src/app # ls
