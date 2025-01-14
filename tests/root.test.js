@@ -16,10 +16,9 @@ describe('Root Router Tests', () => {
     it('should return a welcome message with instructions on GET /', async () => {
         const res = await request(app).get('/');
 
-        expect(res.statusCode).toBe(200); // Ensure status code is 200
-        expect(res.headers['content-type']).toContain('text/html'); // Check Content-Type
+        expect(res.statusCode).toBe(200); 
+        expect(res.headers['content-type']).toContain('text/html'); 
 
-        // Check for parts of the response body
         expect(res.text).toContain('<title>Roman Numeral API</title>');
         expect(res.text).toContain('<h1>Welcome to the Roman Numeral API</h1>');
         expect(res.text).toContain('<a href="/romannumeral?query=123">/romannumeral?query=123</a>');

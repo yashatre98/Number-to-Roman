@@ -23,7 +23,7 @@ jest.mock('express-prom-bundle', () => {
         };
 
         const middleware = (req, res, next) => {
-            next(); // Call `next` to simulate middleware behavior
+            next(); 
         };
 
         middleware.promClient = {
@@ -39,21 +39,20 @@ const metricsMiddleware = promBundle();
 const mockRegister = metricsMiddleware.promClient.register;
 
 const app = express();
-app.use(express.json()); // To parse JSON payloads
+app.use(express.json()); 
 app.use('/', metricsRouter);
 
 describe('Metrics Router Tests', () => {
-    // Test for Prometheus `/metrics` endpoint
     it('should return Prometheus metrics on GET /metrics', async () => {
         const res = await request(app).get('/metrics');
     
-        expect(res.statusCode).toBe(200); // Status code
-        expect(res.headers['content-type']).toContain(mockRegister.contentType); // Validate mocked Content-Type
-        expect(res.text).toBe(mockRegister.metrics()); // Validate mocked metrics
-        expect(mockRegister.metrics).toHaveBeenCalled(); // Ensure metrics() was called
+        expect(res.statusCode).toBe(200); 
+        expect(res.headers['content-type']).toContain(mockRegister.contentType); 
+        expect(res.text).toBe(mockRegister.metrics()); 
+        expect(mockRegister.metrics).toHaveBeenCalled(); 
     });
 
-    //Test React app metrics posted to the server
+    
     it('should return 200 for valid data on POST /react-metrics', async () => {
         const validData = { metricName: 'testMetric', value: 123 };
 
@@ -61,11 +60,11 @@ describe('Metrics Router Tests', () => {
             .post('/react-metrics')
             .send(validData);
 
-        expect(res.statusCode).toBe(200); // Status code
-        expect(res.text).toBe('Metrics received'); // Response message
+        expect(res.statusCode).toBe(200); 
+        expect(res.text).toBe('Metrics received'); 
         expect(logger.info).toHaveBeenCalledWith(
             `Metrics received: ${JSON.stringify(validData)}`
-        ); // Logger verification
+        ); 
     });
 
 });

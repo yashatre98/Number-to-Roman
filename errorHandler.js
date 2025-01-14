@@ -15,7 +15,7 @@ const generalErrorHandler = (err, req, res, next) => {
   const statusCode = err.status || 500;
   const errorMessage =
     statusCode === 404
-      ? err.message // Use the specific 404 error message
+      ? err.message 
       : req.app.get('env') === 'development'
       ? err.message
       : 'Internal Server Error';

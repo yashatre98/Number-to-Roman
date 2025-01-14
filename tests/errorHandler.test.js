@@ -43,25 +43,22 @@ describe('Error Handler Tests', () => {
     });
 
     it('should handle errors with no status code and default to 500', async () => {
-        // Create a separate app instance for this test
         const errorApp = express();
     
-        // Simulate a route that throws an error with no status code
         errorApp.get('/test-default-error', (req, res, next) => {
             const error = new Error('Test default error');
-            next(error); // No status code is set, so it should default to 500
+            next(error); 
         });
     
-        // Use only the generalErrorHandler, skipping handle404
         errorApp.use(generalErrorHandler);
     
         const res = await request(errorApp).get('/test-default-error');
     
-        expect(res.statusCode).toBe(500); // Ensure the default status is 500
+        expect(res.statusCode).toBe(500); 
     });
 
     it('should handle general errors and log the error in development mode', async () => {
-        app.set('env', 'development'); // Set environment to development
+        app.set('env', 'development'); 
 
         const res = await request(app).get('/test-error');
 
@@ -74,7 +71,7 @@ describe('Error Handler Tests', () => {
     });
 
     it('should handle general errors and log the error in production mode', async () => {
-        app.set('env', 'production'); // Set environment to production
+        app.set('env', 'production'); 
 
         const res = await request(app).get('/test-error');
 
