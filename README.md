@@ -245,8 +245,14 @@ The application is thoroughly tested using unit and integration tests to ensure 
 #### **Code Coverage**:
    
    Below is a screenshot of the code coverage report for this project:
+  
 
    ![Code Coverage](https://github.com/user-attachments/assets/dfe22890-55b6-44d7-83bb-b2b8993b5258)
+
+    ```
+    Coverage report access:
+
+    Number-to-Roman % open coverage/lcov-report/index.html
    
 #### **Test Files and Purpose**
 
