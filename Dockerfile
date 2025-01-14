@@ -7,11 +7,15 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install all dependencies (including devDependencies)
+ENV NODE_ENV=development
 RUN npm install
 
 # Copy the rest of the application
 COPY . .
+
+# Run tests
+RUN npm test
 
 # Expose the port your application runs on
 EXPOSE 3000
