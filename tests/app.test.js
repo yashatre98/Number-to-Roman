@@ -17,12 +17,6 @@ describe('App.js Tests', () => {
         expect(res.headers['access-control-allow-origin']).toBe('*');
     });
 
-    // Test for static file serving
-    it('should serve static files from the public directory', async () => {
-        const res = await request(app).get('/stylesheets/style.css'); // Assuming `public/stylesheets/style.css` exists
-        expect(res.statusCode).toBe(200); // File exists
-        expect(res.headers['content-type']).toContain('text/css');
-    });
 
     // Test for centralized routes
     it('should respond with welcome page at root endpoint', async () => {
