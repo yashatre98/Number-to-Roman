@@ -80,7 +80,7 @@
 8. **Access the API**:
     ```
     GET http://localhost:3000/romannumeral?query=123
-    Browser orPostman or curl preferred to test.
+    Browser or Postman or curl preferred to test.
 9. **Testing Instructions out of docker**
     ```bash
     Number-to-Roman % npm install
