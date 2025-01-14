@@ -40,7 +40,7 @@
    test_directory % npm --version
    test_directory % docker --version
    ```
-   once you get versions as outputs, Open docker desktop.
+   once you get versions as outputs, Open docker desktop, and move back to your IDE.
    
   
 1. **Clone the Repository**:  
