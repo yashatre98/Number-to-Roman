@@ -253,6 +253,8 @@ The application is thoroughly tested using unit and integration tests to ensure 
     Coverage report access (only available out of container, in cloned repo):
 
     Number-to-Roman % open coverage/lcov-report/index.html
+  <img width="1509" alt="image" src="https://github.com/user-attachments/assets/3f3d7d19-9071-4765-8f86-161d4ef15d5f" />
+
    
 #### **Test Files and Purpose**
 
