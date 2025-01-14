@@ -146,6 +146,13 @@ Logs **performance metrics** sent by the React frontend to the server logs.
 }
 Response: 200 OK - "Metrics received"
 ```
+**URL**:
+```
+Get /metrics
+```
+shows all the metrics recieved from the react app.
+
+
 ---
 ## Roman Numerals Specification Used in This Project
 
