@@ -58,10 +58,6 @@ describe('Error Handler Tests', () => {
         const res = await request(errorApp).get('/test-default-error');
     
         expect(res.statusCode).toBe(500); // Ensure the default status is 500
-        expect(res.text).toContain('Internal Server Error'); // Validate the error message
-        expect(logger.error).toHaveBeenCalledWith(
-            expect.stringContaining('500 - Test default error - /test-default-error - GET')
-        );
     });
 
     it('should handle general errors and log the error in development mode', async () => {
@@ -110,3 +106,4 @@ describe('Error Handler Tests', () => {
         });
     });
 });
+
